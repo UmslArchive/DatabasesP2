@@ -79,9 +79,6 @@ function fetchCourses() {
                 echo "<option value=\"". $row["name"] ."\">" . $row["name"] . "</option>";
             }
         }
-    } 
-    else {
-        echo "0 results";
     }
 
     $conn->close();
@@ -133,9 +130,6 @@ function fetchAssignments() {
             }
         }
     } 
-    else {
-        echo "0 results";
-    }
 
     $conn->close();
 }
