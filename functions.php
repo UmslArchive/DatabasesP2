@@ -44,16 +44,16 @@
         $result = $conn->query($sql);
 
         if(isset($_SESSION["selectedCourse"])) {
-            echo "<option selected = \"" . $_SESSION["selectedCourse"] . "\">";
+            echo "<option selected=\"selected\">" . $_SESSION["selectedCourse"] . "</option>";
         }
 
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                //if($_SESSION["selectedCourse"] !== $row["name"]) {
+                if($_SESSION["selectedCourse"] !== $row["name"]) {
                     echo "<option value=\"". $row["name"] ."\">" . $row["name"] . "</option>";
                 }
-            //}
+            }
         } else {
             echo "0 results";
         }

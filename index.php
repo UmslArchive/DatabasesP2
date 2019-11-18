@@ -24,15 +24,13 @@
     }
 
     if(isset($_GET['courseSelect'])) {
-        $_SESSION["selectedCourse"] = $_GET['courseSelect'];
+        $_SESSION['selectedCourse'] = $_GET['courseSelect'];
     }
 
-    if(isset($_GET['setCourseAssign']))
+    if(isset($_POST['logout']))
     {
-        
+        logout();
     }
-
-    echo $_SESSION["selectedCourse"];
 ?>
 
 <body>
@@ -75,15 +73,32 @@
         position: relative;
     }
 
+    select {
+        min-width: 13vw;
+    }
+
 </style>
 
-<div class="titleBar bg-dark navbar-dark">Assignment Generator</div>
+<div class="titleBar bg-dark navbar-dark">Real Work</div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <form action="index.php" method="post" id="loginForm">
-        User ID: <input type="text" class="nav-item" name="userid">
-        <input type="submit" value="Login" name="login">        
-    </form>
+
+    <?php
+
+        if(!isset($_SESSION['user'])) {
+            echo    "<form action=\"index.php\" method=\"post\" id=\"loginForm\"> User ID: 
+                        <input type=\"text\" class=\"nav-item\" name=\"userid\">
+                        <input type=\"submit\" value=\"Login\" name=\"login\">        
+                    </form>";
+        }
+        else {
+            echo    "<form action=\"index.php\" method=\"post\" id=\"logoutForm\">
+                        <input type=\"submit\" value=\"Logout\" name=\"logout\">
+                    </form>";
+        }
+    ?>
+
+    
 
     <div class="navSpacer"></div>
 
