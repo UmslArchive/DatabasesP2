@@ -1,0 +1,29 @@
+CREATE TABLE users(
+    uid INT NOT NULL UNIQUE AUTO_INCREMENT,
+    isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
+    PRIMARY KEY(uid)
+); 
+
+CREATE TABLE courses(
+    cid INT NOT NULL UNIQUE AUTO_INCREMENT,
+    NAME VARCHAR(20) NOT NULL,
+    uid INT NOT NULL,
+    PRIMARY KEY(cid),
+    FOREIGN KEY(uid) REFERENCES users(uid)
+);
+
+CREATE TABLE assignments(
+    aid INT NOT NULL UNIQUE AUTO_INCREMENT,
+    title VARCHAR(20) NOT NULL,
+    cid INT NOT NULL,
+    PRIMARY KEY(aid),
+    FOREIGN KEY(cid) REFERENCES courses(cid)
+); 
+
+CREATE TABLE questions(
+    qid INT NOT NULL UNIQUE AUTO_INCREMENT,
+    qText VARCHAR(100) NOT NULL,
+    aid INT DEFAULT NULL,
+    PRIMARY KEY(qid),
+    FOREIGN KEY(aid) REFERENCES assignments(aid)
+);
