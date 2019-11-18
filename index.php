@@ -93,7 +93,7 @@
         }
         else {
             echo    "<form action=\"index.php\" method=\"post\" id=\"logoutForm\">
-                        <input type=\"submit\" value=\"Logout\" name=\"logout\">
+                       UserID " . $_SESSION['user'] . "    <input type=\"submit\" value=\"Logout\" name=\"logout\">
                     </form>";
         }
     ?>
