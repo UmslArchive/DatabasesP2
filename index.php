@@ -26,6 +26,10 @@
         saveCourseToSession($_GET['courseSelect']);
     }
 
+    if(isset($_GET['assignmentSelect'])) {
+        saveAssignmentToSession($_GET['assignmentSelect']);
+    }
+
     if(isset($_POST['logout'])) {
         logout();
     }
@@ -113,7 +117,7 @@
             <br>
             <div class="courseAssignEle">
                 Assignment
-                <select name="assignmentSelect">
+                <select name="assignmentSelect" onchange="this.form.submit()">
                     <?php
                         fetchAssignments();
                     ?>
@@ -136,6 +140,10 @@ if($debug) {
     echo "\$_SESSION['selectedCourseName'] = " . $_SESSION['selectedCourseName'];
     echo "<br>";
     echo "\$_SESSION['selectedCourseCID'] = " . $_SESSION['selectedCourseCID'];
+    echo "<br>";
+    echo "\$_SESSION['selectedAssignmentTitle'] = " . $_SESSION['selectedAssignmentTitle'];
+    echo "<br>";
+    echo "\$_SESSION['selectedAssignmentAID'] = " . $_SESSION['selectedAssignmentAID'];
 }
 
 ?>

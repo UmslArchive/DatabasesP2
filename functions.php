@@ -79,9 +79,11 @@ function fetchCourses() {
                 echo "<option value=\"". $row["name"] ."\">" . $row["name"] . "</option>";
             }
         }
-    } else {
+    } 
+    else {
         echo "0 results";
     }
+
     $conn->close();
 }
 
@@ -90,7 +92,7 @@ function saveCourseToSession($selectedCourseName) {
     connectToDatabase();
     $user = $_SESSION["user"];
 
-    //Query a users courses
+    //Query a users courses 
     $sql = "select name, cid from courses where uid = ". $user . " and name = '" . $selectedCourseName . "';";
     $result = $conn->query($sql);
 
@@ -105,15 +107,54 @@ function fetchAssignments() {
     global $conn;
     connectToDatabase();
     $user = $_SESSION["user"];
-    $course = $_SESSION['selectedCourseName'];
+    $course = $_SESSION['selectedCourseCID'];
 
     //Query a users assignments
-    $sql = "select title from assignments, courses where cid = " . $course;
+    $sql = "select title, aid from assignments where cid = " . $course;
     $result = $conn->query($sql);
 
-    /* while($row = $result->fetch_assoc()) {
-        echo $row['title'];
-    } */
+    //Set the selectedCourseName to first row of the fetch if not already set.
+    if($result->num_rows > 0 && !isset($_SESSION['selectedAssignmentTitle'])) {
+        $row = $result->fetch_assoc();
+        $_SESSION['selectedAssignmentTitle'] = $row['title'];
+        $_SESSION['selectedAssignmentAID'] = $row['aid'];
+    }
+
+    //Set the default seletion to the current selection
+    if(isset($_SESSION["selectedAssignmentTitle"])) {
+        echo "<option selected=\"selected\">" . $_SESSION["selectedAssignmentTitle"] . "</option>";
+    }
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            if($_SESSION["selectedAssignmentTitle"] !== $row["title"]) {
+                echo "<option value=\"". $row["title"] ."\">" . $row["title"] . "</option>";
+            }
+        }
+    } 
+    else {
+        echo "0 results";
+    }
+
+    $conn->close();
+}
+
+function saveAssignmentToSession($selectedAssignmentName) {
+    global $conn;
+    connectToDatabase();
+    $user = $_SESSION["user"];
+    $cid = $_SESSION['selectedCourseCID'];
+
+    //Query a users courses 
+    $sql = "select title, aid from assignments where cid = " . $cid . " and title = '" . $selectedAssignmentName . "';";
+    $result = $conn->query($sql);
+
+    $row = $result->fetch_assoc();
+    $_SESSION['selectedAssignmentTitle'] = $row['title'];
+    $_SESSION['selectedAssignmentAID'] = $row['aid'];
+
+    $conn->close();
 }
 
 function selectAssignment() {
