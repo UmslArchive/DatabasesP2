@@ -14,6 +14,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
+
+<!-- Establish session -->
 <?php 
     include 'functions.php';
 
@@ -36,6 +38,7 @@
 ?>
 
 <body>
+
 <style>
     .titleBar {
         margin: auto;
@@ -94,9 +97,10 @@
     ?>
 
     
-
+    <!-- Div used for spacing the divs in the navbar -->
     <div class="navSpacer"></div>
 
+    <!-- Assignment and course form -->
     <div class="courseAssign">
         <form action="index.php" method="get">
             <div class="courseAssignEle">
@@ -115,6 +119,7 @@
         </form>
     </div>
 </nav>
+
 </body>
 
 </html>
