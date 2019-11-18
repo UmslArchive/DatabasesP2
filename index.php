@@ -137,13 +137,11 @@
     
 if($debug) {
     echo "DEBUG <br>";
-    echo "\$_SESSION['selectedCourseName'] = " . $_SESSION['selectedCourseName'];
-    echo "<br>";
-    echo "\$_SESSION['selectedCourseCID'] = " . $_SESSION['selectedCourseCID'];
-    echo "<br>";
-    echo "\$_SESSION['selectedAssignmentTitle'] = " . $_SESSION['selectedAssignmentTitle'];
-    echo "<br>";
-    echo "\$_SESSION['selectedAssignmentAID'] = " . $_SESSION['selectedAssignmentAID'];
+    echo "\$_SESSION['user'] = " . $_SESSION['user']; echo "<br>";
+    echo "\$_SESSION['selectedCourseName'] = " . $_SESSION['selectedCourseName']; echo "<br>";
+    echo "\$_SESSION['selectedCourseCID'] = " . $_SESSION['selectedCourseCID']; echo "<br>";
+    echo "\$_SESSION['selectedAssignmentTitle'] = " . $_SESSION['selectedAssignmentTitle']; echo "<br>";
+    echo "\$_SESSION['selectedAssignmentAID'] = " . $_SESSION['selectedAssignmentAID']; echo "<br>";
 }
 
 ?>
