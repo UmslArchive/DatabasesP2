@@ -102,18 +102,14 @@
             <div class="courseAssignEle">
                 Course 
                 <select name="courseSelect" onchange="this.form.submit()">
-                    <?php
-                        fetchCourses();
-                    ?>
+                    <?php fetchCourses(); ?>
                 </select>
             </div>
             <br>
             <div class="courseAssignEle">
                 Assignment
                 <select name="assignmentSelect" onchange="this.form.submit()">
-                    <?php
-                        fetchAssignments();
-                    ?>
+                    <?php fetchAssignments(); ?>
                 </select>
             </div>
         </form>
