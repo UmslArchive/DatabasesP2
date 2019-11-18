@@ -130,8 +130,11 @@
 
 </html>
 
+<!-- DEBUGGING -->
 <?php
+    
 if($debug) {
     echo "SelectedCourse: " . $_SESSION['selectedCourse'];
 }
+
 ?>

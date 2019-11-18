@@ -60,11 +60,13 @@ function fetchCourses() {
     $sql = "select name from courses, users where courses.uid = " . $user;
     $result = $conn->query($sql);
 
+    //Set the selectedCourse to first row of the fetch if not already set.
     if($result->num_rows > 0 && !isset($_SESSION['selectedCourse'])) {
         $row = $result->fetch_assoc();
         $_SESSION['selectedCourse'] = $row['name'];
     }
 
+    //Set the default seletion to the current selection
     if(isset($_SESSION["selectedCourse"])) {
         echo "<option selected=\"selected\">" . $_SESSION["selectedCourse"] . "</option>";
     }
