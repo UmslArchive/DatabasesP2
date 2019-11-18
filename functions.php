@@ -7,6 +7,8 @@ $username = "root";
 $password = "root";
 $conn;
 
+$debug = true;
+
 function connectToDatabase() {
     global $conn, $servername, $db, $username, $password;
     $conn = new mysqli($servername, $username, $password, $db);
@@ -58,6 +60,11 @@ function fetchCourses() {
     $sql = "select name from courses, users where courses.uid = " . $user;
     $result = $conn->query($sql);
 
+    if($result->num_rows > 0 && !isset($_SESSION['selectedCourse'])) {
+        $row = $result->fetch_assoc();
+        $_SESSION['selectedCourse'] = $row['name'];
+    }
+
     if(isset($_SESSION["selectedCourse"])) {
         echo "<option selected=\"selected\">" . $_SESSION["selectedCourse"] . "</option>";
     }
@@ -79,6 +86,7 @@ function fetchAssignments() {
     global $conn;
     connectToDatabase();
     $user = $_SESSION["user"];
+    $course = $_SESSION['selectedCourse'];
 
     //Query a users assignments
 }

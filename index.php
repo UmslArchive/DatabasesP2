@@ -126,8 +126,12 @@
         </form>
     </div>
 </nav>
-
-
-
 </body>
+
 </html>
+
+<?php
+if($debug) {
+    echo "SelectedCourse: " . $_SESSION['selectedCourse'];
+}
+?>
