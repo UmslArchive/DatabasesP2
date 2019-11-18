@@ -64,13 +64,6 @@
         padding: 1vh;
     }
 
-    #courseAssignSubmit {
-        position: relative;
-        float: right;
-        width: 50%;
-        right: 9px;
-    }
-
     #loginForm {
         position: relative;
     }
@@ -123,8 +116,6 @@
                     ?>
                 </select>
             </div>
-            <br>
-            <input type="submit" id="courseAssignSubmit" value="Go" name="setCourseAssign">
         </form>
     </div>
 </nav>
