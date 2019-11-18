@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,15 +14,23 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
-<?php include 'functions.php' ?>
+<?php 
+    include 'functions.php';
 
-<body>
-
-<style>
-    input[type=text] {
-
+    //Handle login
+    if(isset($_POST['login']))
+    {
+        login();
     }
 
+    if(isset($_GET['setCourseAssign']))
+    {
+        
+    }
+?>
+
+<body>
+<style>
     .titleBar {
         margin: auto;
         font-weight: bold;
@@ -33,12 +45,12 @@
 
     .navSpacer {
         margin: auto;
-        font-weight: bold;
-        font-size: 200%;
     }
 
     .courseAssign {
         font-weight: bold;
+        position: relative;
+        right: 15vw;
     }
 
     .courseAssignEle {
@@ -47,14 +59,26 @@
         padding: 1vh;
     }
 
+    #courseAssignSubmit {
+        position: relative;
+        float: right;
+        width: 50%;
+        right: 9px;
+    }
+
+    #loginForm {
+        position: relative;
+        left: 15vw;
+    }
+
 </style>
 
 <div class="titleBar bg-dark navbar-dark">Assignment Generator</div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <form action="index.php" method="post">
+    <form action="index.php" method="post" id="loginForm">
         User ID: <input type="text" class="nav-item" name="userid">
-        <input type="submit" value="Login">        
+        <input type="submit" value="Login" name="login">        
     </form>
 
     <div class="navSpacer"></div>
@@ -78,6 +102,8 @@
                     ?>
                 </select>
             </div>
+            <br>
+            <input type="submit" id="courseAssignSubmit" value="Go" name="setCourseAssign">
         </form>
     </div>
 </nav>
