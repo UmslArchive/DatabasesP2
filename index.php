@@ -23,10 +23,16 @@
         login();
     }
 
+    if(isset($_GET['courseSelect'])) {
+        $_SESSION["selectedCourse"] = $_GET['courseSelect'];
+    }
+
     if(isset($_GET['setCourseAssign']))
     {
         
     }
+
+    echo $_SESSION["selectedCourse"];
 ?>
 
 <body>
@@ -50,7 +56,6 @@
     .courseAssign {
         font-weight: bold;
         position: relative;
-        right: 15vw;
     }
 
     .courseAssignEle {
@@ -68,7 +73,6 @@
 
     #loginForm {
         position: relative;
-        left: 15vw;
     }
 
 </style>
@@ -87,7 +91,7 @@
         <form action="index.php" method="get">
             <div class="courseAssignEle">
                 Course 
-                <select name="courseSelect">
+                <select name="courseSelect" onchange="this.form.submit()">
                     <?php
                         fetchCourses();
                     ?>

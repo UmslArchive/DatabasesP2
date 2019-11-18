@@ -3,7 +3,7 @@
     $servername = "localhost";
     $db = "p2";
     $username = "root";
-    $password = "";
+    $password = "root";
     $conn;
 
 
@@ -14,7 +14,6 @@
         if ($conn->connect_errno) {
             echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
         }
-
     }
 
     function fetchQuestionBank() {
@@ -41,11 +40,24 @@
         $user = $_SESSION["user"];
 
         //Query a users courses
+        $sql = "select name from courses, users where courses.uid = " . $user;
+        $result = $conn->query($sql);
 
-        echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
-        echo "<option value=\"courses1\">test_course</option>";
-        echo "<option value=\"courses2\">test_course2</option>";
-        echo "<option value=\"courses3\">".$_SESSION["user"]."</option>";
+        if(isset($_SESSION["selectedCourse"])) {
+            echo "<option selected = \"" . $_SESSION["selectedCourse"] . "\">";
+        }
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                //if($_SESSION["selectedCourse"] !== $row["name"]) {
+                    echo "<option value=\"". $row["name"] ."\">" . $row["name"] . "</option>";
+                }
+            //}
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
     }
 
     function fetchAssignments() {
@@ -54,12 +66,6 @@
         $user = $_SESSION["user"];
 
         //Query a users assignments
-
-        echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
-        echo "<option value=\"assignments1\">". mysqli_get_host_info($conn) ."</option>";
-        echo "<option value=\"assignments2\">".$user."</option>";
-        echo "<option value=\"assignments3\">test_assign3</option>";
-        echo "<option value=\"assignments4\">test_assign4</option>";
     }
 
     function selectAssignment() {
