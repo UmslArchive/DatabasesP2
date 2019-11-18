@@ -18,17 +18,15 @@
     include 'functions.php';
 
     //Handle login
-    if(isset($_POST['login']))
-    {
+    if(isset($_POST['login'])) {
         login();
     }
 
     if(isset($_GET['courseSelect'])) {
-        $_SESSION['selectedCourse'] = $_GET['courseSelect'];
+        saveCourseToSession($_GET['courseSelect']);
     }
 
-    if(isset($_POST['logout']))
-    {
+    if(isset($_POST['logout'])) {
         logout();
     }
 ?>
@@ -74,7 +72,7 @@
     }
 
     select {
-        min-width: 13vw;
+        min-width: 20vw;
     }
 
 </style>
@@ -134,7 +132,10 @@
 <?php
     
 if($debug) {
-    echo "SelectedCourse: " . $_SESSION['selectedCourse'];
+    echo "DEBUG <br>";
+    echo "\$_SESSION['selectedCourseName'] = " . $_SESSION['selectedCourseName'];
+    echo "<br>";
+    echo "\$_SESSION['selectedCourseCID'] = " . $_SESSION['selectedCourseCID'];
 }
 
 ?>
