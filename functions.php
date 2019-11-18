@@ -19,6 +19,14 @@
 
     }
 
+    function fetchCourses() {
+        echo "<option value=\"courses\">test_course</option>";
+    }
+
+    function fetchAssignments() {
+        echo "<option value=\"assignments\">test_assign</option>";
+    }
+
     function selectAssignment() {
 
     }

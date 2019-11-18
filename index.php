@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Assignment Generator</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -9,23 +9,77 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+
+<?php include 'functions.php' ?>
+
 <body>
 
+<style>
+    input[type=text] {
+
+    }
+
+    .titleBar {
+        margin: auto;
+        font-weight: bold;
+        font-size: 200%;
+        color: #d9d9d9;
+        text-align: center;
+    }
+
+    .navbar {
+        color: #d9d9d9;
+    }
+
+    .navSpacer {
+        margin: auto;
+        font-weight: bold;
+        font-size: 200%;
+    }
+
+    .courseAssign {
+        font-weight: bold;
+    }
+
+    .courseAssignEle {
+        position: relative;
+        float: right;
+        padding: 1vh;
+    }
+
+</style>
+
+<div class="titleBar bg-dark navbar-dark">Assignment Generator</div>
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-  </ul>
+    <form action="index.php" method="post">
+        User ID: <input type="text" class="nav-item" name="userid">
+        <input type="submit" value="Login">        
+    </form>
+
+    <div class="navSpacer"></div>
+
+    <div class="courseAssign">
+        <form action="index.php" method="get">
+            <div class="courseAssignEle">
+                Course 
+                <select name="courseSelect">
+                    <?php
+                        fetchCourses();
+                    ?>
+                </select>
+            </div>
+            <br>
+            <div class="courseAssignEle">
+                Assignment
+                <select name="assignmentSelect">
+                    <?php
+                        fetchAssignments();
+                    ?>
+                </select>
+            </div>
+        </form>
+    </div>
 </nav>
 
 
