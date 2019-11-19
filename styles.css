@@ -70,3 +70,7 @@ select {
     padding-bottom: 3vh;
     padding-left: 5vw;
 }
+
+#invalidUserDiv {
+    padding-left: 3vh;
+}

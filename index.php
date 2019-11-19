@@ -48,7 +48,7 @@
 <body>
 
 <!-- Page title header -->
-<div class="titleBar bg-dark navbar-dark">Real Work</div>
+<div class="titleBar bg-dark navbar-dark">Assignment Generator</div>
 
 
 <!-- Navbar containing login form and course/assignment selection form -->
@@ -61,6 +61,10 @@
                         <input type=\"text\" class=\"nav-item\" name=\"userid\">
                         <input type=\"submit\" value=\"Login\" name=\"login\">        
                     </form>";
+            
+            if(isset($_SESSION['invalidUser'])) {
+                echo "<div id=\"invalidUserDiv\">Invalid User ID</div>";
+            }
         }
         else {
             echo    "<form action=\"index.php\" method=\"post\" id=\"logoutForm\">

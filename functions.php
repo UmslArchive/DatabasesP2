@@ -21,6 +21,11 @@ function connectToDatabase() {
 }
 
 function login() {
+    //Reset session
+    $_SESSION = array();
+    session_destroy();
+    session_start();
+
     global $conn;
     connectToDatabase();
 
@@ -31,8 +36,7 @@ function login() {
     //If the user id is not found, restart the session
     if($result->num_rows == 0) {
         echo "Invalid User ID";
-        $_SESSION = array();
-        session_destroy();
+        $_SESSION['invalidUser'] = true;
     }
     else {
         //This is probably unsecure
