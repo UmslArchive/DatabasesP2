@@ -19,15 +19,19 @@
 <?php 
     include 'functions.php';
 
-    //Handle login
+    //All of these 'isset' conditionals handle a form submission by either
+    //updating the state variables in the _session global or by updating the 
+    //database. Then the header function wipes away the get and post variables,
+    //so all of these conditionals are skipped, but the results are stored.
+
+    //Set 'user' session variable
     if(isset($_POST['login'])) {
         login();
         getAdminStatus();
-        
-        //Redirect after processing post to get rid of annoying refresh alert
         header('Location: index.php');
     }
 
+    //set 'selectedCourse' session state variable
     if(isset($_GET['courseSelect'])) {
         saveCourseToSession($_GET['courseSelect']);
     }
@@ -36,10 +40,12 @@
         saveAssignmentToSession($_GET['assignmentSelect']);
     }
 
+    if(isset($_GET['courseSelect']) || isset($_GET['assignmentSelect'])) {
+        header('Location: index.php');
+    }
+
     if(isset($_POST['logout'])) {
         logout();
-
-        //Redirect after processing post to get rid of annoying refresh alert
         header('Location: index.php');
     }
 
