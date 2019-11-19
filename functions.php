@@ -44,6 +44,8 @@ function login() {
         //This is probably unsecure
         $_SESSION["user"] = $_POST['userid'];
     }
+
+    $conn->close();
 }
 
 function logout() {
@@ -129,7 +131,7 @@ function fetchAssignments() {
                 echo "<option value=\"". $row["title"] ."\">" . $row["title"] . "</option>";
             }
         }
-    } 
+    }
 
     $conn->close();
 }
@@ -149,10 +151,6 @@ function saveAssignmentToSession($selectedAssignmentName) {
     $_SESSION['selectedAssignmentAID'] = $row['aid'];
 
     $conn->close();
-}
-
-function selectAssignment() {
-
 }
 
 function addNewQuestion() {
