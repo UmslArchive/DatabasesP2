@@ -59,7 +59,7 @@ function fetchCourses() {
     $user = $_SESSION["user"];
 
     //Query a users courses
-    $sql = "select name, cid from courses, users where courses.uid = " . $user;
+    $sql = "select name, cid from courses where courses.uid = " . $user;
     $result = $conn->query($sql);
 
     //Set the selectedCourseName to first row of the fetch if not already set.
