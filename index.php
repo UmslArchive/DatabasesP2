@@ -100,10 +100,23 @@
 <!-- Tables -->
 <div class="tablesContainer">
     
+    <!-- Table titles -->
+    <div class="row">
+        <div class="col"><b>Questions</b></div>
+        <div class="col"><b>Assignment Questions</b></div>
+    </div>
+    
     <!-- row 1 -->
     <div class="row">
-        <div id="questionPoolDiv" class="col">
-            hi
+        <div style="height:30vh;overflow:auto;" id="questionPoolDiv" class="col">
+            <table>
+                <tr>
+                    <td><input type='button' value='Add'/> test</td>
+                </tr>
+                <tr>
+                    <td><input type='button' value='Add'/> fillerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</td>
+                </tr>
+            </table>
         </div>
 
         <div id="assignmentQuestionPoolDiv" class="col">
@@ -111,12 +124,23 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-10"><b>New Question</b></div>
+        <div class="col"></div>
+    </div>
+
     <!-- row 2 -->
     <div class="row">
         <div class="col"></div> <!-- empty column -->
-        <div id="newQuestionDiv" class="col">
-            bye
+        
+        <div id="newQuestionDiv" class="col-10">
+            <form action="index.php" method="get">
+                <input type="text" name="newQuestionText" style="width:400px;">
+                <input type="submit" value="Add">
+            </form>
         </div>
+        
         <div class="col"></div> <!-- empty column -->
     </div>
 
