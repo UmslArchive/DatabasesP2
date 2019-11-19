@@ -177,8 +177,23 @@ function fetchAssignmentQuestions() {
 
 }
 
-function addNewQuestion() {
+function addNewQuestion($qText) {
+    global $conn;
+    connectToDatabase();
 
+    $aid = $_SESSION['selectedAssignmentAID'];
+
+    //Check if question is already in
+    $sql = "select qText from questions where qText = '" . $qText . "';";
+    $result = $conn->query(htmlspecialchars($sql));
+
+    //Insert into the question pool if no results found
+    if($result->num_rows == 0) {
+        $sql = "insert into questions (qText, aid) values ('" . $qText . "', null);";
+        $result = $conn->query(htmlspecialchars($sql));
+    }
+
+    $conn->close();
 }
 
 function addQuestionToAssignment() {

@@ -16,7 +16,6 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
-<!-- Establish session -->
 <?php 
     include 'functions.php';
 
@@ -41,6 +40,11 @@
         logout();
 
         //Redirect after processing post to get rid of annoying refresh alert
+        header('Location: index.php');
+    }
+
+    if(isset($_GET['newQuestionText'])) {
+        addNewQuestion($_GET['newQuestionText']);
         header('Location: index.php');
     }
 ?>
