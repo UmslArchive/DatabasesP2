@@ -27,3 +27,18 @@ CREATE TABLE questions(
     PRIMARY KEY(qid),
     FOREIGN KEY(aid) REFERENCES assignments(aid)
 );
+
+SELECT
+    qid,
+    qtext,
+    users.uid
+FROM
+    users,
+    questions,
+    assignments,
+    courses
+WHERE
+    questions.aid = assignments.aid AND 
+    assignments.cid = courses.cid AND 
+    courses.uid = users.uid AND
+    users.uid = 1;
