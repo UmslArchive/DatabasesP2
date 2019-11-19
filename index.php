@@ -22,6 +22,7 @@
     //Handle login
     if(isset($_POST['login'])) {
         login();
+        getAdminStatus();
     }
 
     if(isset($_GET['courseSelect'])) {
@@ -124,12 +125,15 @@
 
 </html>
 
+
+
 <!-- DEBUGGING -->
 <?php
     
 if($debug) {
     echo "DEBUG <br>";
     echo "\$_SESSION['user'] = " . $_SESSION['user']; echo "<br>";
+    echo "\$_SESSION['admin'] = " . $_SESSION['admin']; echo "<br>";
     echo "\$_SESSION['selectedCourseName'] = " . $_SESSION['selectedCourseName']; echo "<br>";
     echo "\$_SESSION['selectedCourseCID'] = " . $_SESSION['selectedCourseCID']; echo "<br>";
     echo "\$_SESSION['selectedAssignmentTitle'] = " . $_SESSION['selectedAssignmentTitle']; echo "<br>";

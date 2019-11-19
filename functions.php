@@ -18,14 +18,6 @@ function connectToDatabase() {
     }
 }
 
-function fetchQuestionBank() {
-
-}
-
-function fetchAssignmentQuestions() {
-
-}
-
 function login() {
     global $conn;
     connectToDatabase();
@@ -46,6 +38,22 @@ function login() {
     }
 
     $conn->close();
+}
+
+function getAdminStatus() {
+    global $conn;
+    connectToDatabase();
+
+    if(isset($_SESSION['user'])) {
+        $sql = "select isAdmin from users where uid = " . $_SESSION['user'];
+
+        $result = $conn->query($sql);
+
+        if($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            $_SESSION["admin"] = $row['isAdmin'];
+        }
+    }
 }
 
 function logout() {
@@ -151,6 +159,14 @@ function saveAssignmentToSession($selectedAssignmentName) {
     $_SESSION['selectedAssignmentAID'] = $row['aid'];
 
     $conn->close();
+}
+
+function fetchQuestionBank() {
+
+}
+
+function fetchAssignmentQuestions() {
+
 }
 
 function addNewQuestion() {
