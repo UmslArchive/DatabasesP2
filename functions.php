@@ -1,6 +1,6 @@
 <?php
 
-//Global connection variables
+//Config
 $servername = "localhost";
 $db = "p2";
 $username = "root";
@@ -8,6 +8,8 @@ $password = "root";
 $conn;
 
 $debug = true;
+
+//=============================================================================
 
 function connectToDatabase() {
     global $conn, $servername, $db, $username, $password;
