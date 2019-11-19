@@ -93,21 +93,28 @@
     </div>
 </nav>
 
-<div class="row">
-    <div class="questionPoolDiv col">
-        hi
+<!-- Tables -->
+<div class="tablesContainer">
+    <!-- row 1 -->
+    <div class="row">
+        <div id="questionPoolDiv" class="col">
+            hi
+        </div>
+
+        <div id="assignmentQuestionPoolDiv" class="col">
+            there
+        </div>
     </div>
 
-    <div class="assignmentQuestionPoolDiv col">
-        there
+    <!-- row 2 -->
+    <div class="row">
+        <div class="col"></div> <!-- empty column -->
+        <div id="newQuestionDiv" class="col">
+            bye
+        </div>
+        <div class="col"></div> <!-- empty column -->
     </div>
-</div>
-<div class="row">
-    <div class="col"></div> <!-- empty column -->
-    <div class="newQuestionDiv col">
-        bye
-    </div>
-    <div class="col"></div> <!-- empty column -->
+
 </div>
 
 <hr style="border-top: 2px solid black;">

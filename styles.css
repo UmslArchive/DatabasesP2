@@ -33,14 +33,40 @@ select {
     min-width: 20vw;
 }
 
-.questionPoolDiv {
+#questionPoolDiv {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
 
 }
 
-.assignmentQuestionPoolDiv {
-
+#assignmentQuestionPoolDiv {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
 }
 
-.newQuestionDiv {
-    
+#newQuestionDiv {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.tablesContainer {
+    padding-top: 3vh;
+    padding-right: 5vw;
+    padding-bottom: 3vh;
+    padding-left: 5vw;
 }
