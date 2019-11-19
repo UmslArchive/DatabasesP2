@@ -56,6 +56,8 @@ function getAdminStatus() {
             $_SESSION["admin"] = $row['isAdmin'];
         }
     }
+
+    $conn->close();
 }
 
 function logout() {
