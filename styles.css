@@ -1,0 +1,38 @@
+.titleBar {
+    margin: auto;
+    font-weight: bold;
+    font-size: 200%;
+    color: #d9d9d9;
+    text-align: center;
+}
+
+.navbar {
+    color: #d9d9d9;
+}
+
+.navSpacer {
+    margin: auto;
+}
+
+.courseAssign {
+    font-weight: bold;
+    position: relative;
+}
+
+.courseAssignEle {
+    position: relative;
+    float: right;
+    padding: 1vh;
+}
+
+#loginForm {
+    position: relative;
+}
+
+select {
+    min-width: 20vw;
+}
+
+.questionPoolDiv {
+
+}

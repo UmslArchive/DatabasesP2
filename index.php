@@ -12,8 +12,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
 
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
 
 <!-- Establish session -->
 <?php 
@@ -23,6 +24,9 @@
     if(isset($_POST['login'])) {
         login();
         getAdminStatus();
+        
+        //Redirect after processing post to get rid of annoying alert
+        header('Location: index.php');
     }
 
     if(isset($_GET['courseSelect'])) {
@@ -35,51 +39,19 @@
 
     if(isset($_POST['logout'])) {
         logout();
+
+        //Redirect after processing post to get rid of annoying alert
+        header('Location: index.php');
     }
 ?>
 
 <body>
 
-<style>
-    .titleBar {
-        margin: auto;
-        font-weight: bold;
-        font-size: 200%;
-        color: #d9d9d9;
-        text-align: center;
-    }
-
-    .navbar {
-        color: #d9d9d9;
-    }
-
-    .navSpacer {
-        margin: auto;
-    }
-
-    .courseAssign {
-        font-weight: bold;
-        position: relative;
-    }
-
-    .courseAssignEle {
-        position: relative;
-        float: right;
-        padding: 1vh;
-    }
-
-    #loginForm {
-        position: relative;
-    }
-
-    select {
-        min-width: 20vw;
-    }
-
-</style>
-
+<!-- Page title header -->
 <div class="titleBar bg-dark navbar-dark">Real Work</div>
 
+
+<!-- Navbar containing login form and course/assignment selection form -->
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
     <?php
@@ -120,6 +92,15 @@
         </form>
     </div>
 </nav>
+
+<div class="questionPoolDiv">
+</div>
+
+<div class="assignmentQuestionPoolDiv">
+</div>
+
+<div class="newQuestionDiv">
+</div>
 
 </body>
 
