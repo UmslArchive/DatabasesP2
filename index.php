@@ -25,7 +25,7 @@
         login();
         getAdminStatus();
         
-        //Redirect after processing post to get rid of annoying alert
+        //Redirect after processing post to get rid of annoying refresh alert
         header('Location: index.php');
     }
 
@@ -40,7 +40,7 @@
     if(isset($_POST['logout'])) {
         logout();
 
-        //Redirect after processing post to get rid of annoying alert
+        //Redirect after processing post to get rid of annoying refresh alert
         header('Location: index.php');
     }
 ?>
