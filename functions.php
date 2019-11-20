@@ -268,3 +268,8 @@ function removeQuestionFromAssignment($qid) {
 
     $conn->close();
 }
+
+//Bonus
+function executeArbitrarySqlStatement($sql) {
+    
+}
