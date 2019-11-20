@@ -136,7 +136,7 @@
             </table>
         </div>
 
-        <div id="assignmentQuestionPoolDiv" class="col">
+        <div style="height:30vh;overflow:auto;" id="assignmentQuestionPoolDiv" class="col">
             <table>
                 <?php fetchAssignmentQuestions(); ?>
             </table>

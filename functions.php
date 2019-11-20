@@ -242,9 +242,27 @@ function addNewQuestion($qText) {
 }
 
 function addQuestionToAssignment($qid) {
-    
+    global $conn;
+    connectToDatabase();
+
+    $selectedAID = $_SESSION['selectedAssignmentAID'];
+
+
+    $sql = "update questions set aid = ". $selectedAID . " where qid = " . $qid;
+    $result = $conn->query($sql);
+
+    $conn->close();
 }
 
 function removeQuestionFromAssignment($qid) {
+    global $conn;
+    connectToDatabase();
 
+    $selectedAID = $_SESSION['selectedAssignmentAID'];
+
+
+    $sql = "update questions set aid = NULL where qid = " . $qid;
+    $result = $conn->query($sql);
+
+    $conn->close();
 }
