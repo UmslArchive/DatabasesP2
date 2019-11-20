@@ -5,15 +5,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Assignment Generator</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Assignment Generator</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <?php 
@@ -49,6 +52,12 @@
     //Reset all session state variables
     if(isset($_POST['logout'])) {
         logout();
+        header('Location: index.php');
+    }
+
+    //Update assignments table to contain newly created assignment
+    if(isset($_GET['newAssignText'])) {
+        createAssignment($_GET['newAssignText']);
         header('Location: index.php');
     }
 
@@ -99,8 +108,18 @@
         }
     ?>
 
-    
-    <!-- Div used for spacing the divs in the navbar -->
+    <div class="navSpacer"></div>
+    <?php
+        if(isset($_SESSION['user'])) {
+            echo    "<div class='createAssign'>" .
+                        "<form action='index.php' method='get'>" .
+                            "<input type='text' name='newAssignText' style='width:200px;'> " .
+                            "<input type='submit' value='Create Assignment'>" .
+                        "</form>" .
+                    "</div>";
+        }
+    ?>
+
     <div class="navSpacer"></div>
 
     <!-- Assignment and course form -->

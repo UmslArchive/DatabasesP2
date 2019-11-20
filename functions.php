@@ -69,6 +69,10 @@ function logout() {
     session_destroy();
 }
 
+function createAssignment() {
+
+}
+
 function fetchCourses() {
     global $conn;
     connectToDatabase();
