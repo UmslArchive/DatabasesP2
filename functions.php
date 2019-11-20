@@ -170,7 +170,31 @@ function saveAssignmentToSession($selectedAssignmentName) {
 }
 
 function fetchQuestionBank() {
+    global $conn;
+    connectToDatabase();
 
+    $selectedAID = $_SESSION['selectedAssignmentAID'];
+
+    //Print the table:
+
+    //Select all questions
+    $sql = "select qid, qText, aid from questions";
+    $result = $conn->query($sql);
+    while($row = $result->fetch_assoc()) {
+        //Add a delete button if aid is current assignment
+        if($row['aid'] === $selectedAID) {
+            echo    "<tr>" .
+                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='remove'>-</button> " . $row['qText'] . "</td>" .
+                    "</tr>";
+        }
+        else {
+            echo    "<tr>" .
+                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='add'>+</button> " . $row['qText'] . "</td>" .
+                    "</tr>";
+        }
+    }
+
+    $conn->close();
 }
 
 function fetchAssignmentQuestions() {

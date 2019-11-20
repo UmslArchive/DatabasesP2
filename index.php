@@ -117,15 +117,12 @@
     </div>
     
     <!-- row 1 -->
+    <form action="index.php" id="addRemForm">
+
     <div class="row">
         <div style="height:30vh;overflow:auto;" id="questionPoolDiv" class="col">
             <table>
-                <tr>
-                    <td><input type='button' value='Add'/> test</td>
-                </tr>
-                <tr>
-                    <td><input type='button' value='Add'/> fillerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</td>
-                </tr>
+                <?php fetchQuestionBank() ?>
             </table>
         </div>
 
@@ -133,6 +130,7 @@
             there
         </div>
     </div>
+    </form>
 
     <div class="row">
         <div class="col"></div>
