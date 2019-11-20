@@ -184,12 +184,12 @@ function fetchQuestionBank() {
         //Add a delete button if aid is current assignment
         if($row['aid'] === $selectedAID && $row['aid'] !== NULL) {
             echo    "<tr>" .
-                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='remove'>-</button> " . $row['qText'] . "</td>" .
+                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='rm' value='" . $row['qid'] . "'>-</button> " . $row['qText'] . "</td>" .
                     "</tr>";
         }
         else {
             echo    "<tr>" .
-                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='add'>+</button> " . $row['qText'] . "</td>" .
+                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='add' value='" . $row['qid'] . "'>+</button> " . $row['qText'] . "</td>" .
                     "</tr>";
         }
     }
