@@ -55,11 +55,13 @@
     }
 
     if(isset($_GET['add'])) {
-        addQuestionToAssignment();
+        addQuestionToAssignment($_GET['add']);
+        header('Location: index.php');
     }
 
     if(isset($_GET['rm'])) {
-        removeQuestionFromAssignment();
+        removeQuestionFromAssignment($_GET['rm']);
+        header('Location: index.php');
     }
 ?>
 

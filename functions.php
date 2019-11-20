@@ -220,6 +220,9 @@ function fetchAssignmentQuestions() {
 }
 
 function addNewQuestion($qText) {
+    if($qText === "")
+        return;
+
     global $conn;
     connectToDatabase();
 
@@ -238,10 +241,10 @@ function addNewQuestion($qText) {
     $conn->close();
 }
 
-function addQuestionToAssignment() {
-
+function addQuestionToAssignment($qid) {
+    
 }
 
-function removeQuestionFromAssignment() {
+function removeQuestionFromAssignment($qid) {
 
 }
