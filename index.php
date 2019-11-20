@@ -24,41 +24,47 @@
     //database. Then the header function wipes away the get and post variables,
     //so all of these conditionals are skipped, but the results are stored.
 
-    //Set 'user' session variable
+    //Set 'user' session state variable
     if(isset($_POST['login'])) {
         login();
         getAdminStatus();
         header('Location: index.php');
     }
 
-    //set 'selectedCourse' session state variable
+    //Set 'selectedCourse' session state variable
     if(isset($_GET['courseSelect'])) {
         saveCourseToSession($_GET['courseSelect']);
     }
 
+    //Set 'selectedAssignment' session state variable
     if(isset($_GET['assignmentSelect'])) {
         saveAssignmentToSession($_GET['assignmentSelect']);
     }
 
+    //Clear get requests out of the url after processing either
     if(isset($_GET['courseSelect']) || isset($_GET['assignmentSelect'])) {
         header('Location: index.php');
     }
 
+    //Reset all session state variables
     if(isset($_POST['logout'])) {
         logout();
         header('Location: index.php');
     }
 
+    //Send a question to be stored in the 'questions' table in the db
     if(isset($_GET['newQuestionText'])) {
         addNewQuestion($_GET['newQuestionText']);
         header('Location: index.php');
     }
 
+    //Assign the currently question's aid to the selected assignment
     if(isset($_GET['add'])) {
         addQuestionToAssignment($_GET['add']);
         header('Location: index.php');
     }
 
+    //Set the currently selected questions aid field to NULL
     if(isset($_GET['rm'])) {
         removeQuestionFromAssignment($_GET['rm']);
         header('Location: index.php');
@@ -117,7 +123,7 @@
     </div>
 </nav>
 
-<!-- Tables -->
+<!-- Tables: -->
 <div class="tablesContainer">
     
     <!-- Table titles -->
