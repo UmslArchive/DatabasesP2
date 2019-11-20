@@ -182,7 +182,7 @@ function fetchQuestionBank() {
     $result = $conn->query($sql);
     while($row = $result->fetch_assoc()) {
         //Add a delete button if aid is current assignment
-        if($row['aid'] === $selectedAID) {
+        if($row['aid'] === $selectedAID && $row['aid'] !== NULL) {
             echo    "<tr>" .
                         "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='remove'>-</button> " . $row['qText'] . "</td>" .
                     "</tr>";
