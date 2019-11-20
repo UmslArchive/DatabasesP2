@@ -132,7 +132,7 @@
         <div class="col"><b>Assignment Questions</b></div>
     </div>
     
-    <!-- row 1 -->
+    <!-- row 1 : question pool and assingment-question pool -->
     <form action="index.php" id="addRemForm">
 
     <div class="row">
@@ -150,13 +150,14 @@
     </div>
     </form>
 
+    <!-- New question form title -->
     <div class="row">
         <div class="col"></div>
         <div class="col-10"><b>New Question</b></div>
         <div class="col"></div>
     </div>
 
-    <!-- row 2 -->
+    <!-- row 2 : add new question form-->
     <div class="row">
         <div class="col"></div> <!-- empty column -->
         
