@@ -138,7 +138,7 @@
     <div class="row">
         <div style="height:30vh;overflow:auto;" id="questionPoolDiv" class="col">
             <table>
-                <?php fetchQuestionBank() ?>
+                <?php fetchQuestionBank(); ?>
             </table>
         </div>
 
