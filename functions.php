@@ -178,18 +178,28 @@ function fetchQuestionBank() {
     //Print the table:
 
     //Select all questions
-    $sql = "select qid, qText, aid from questions";
+    $sql = "select qid, qText, aid from questions;";
     $result = $conn->query($sql);
     while($row = $result->fetch_assoc()) {
+
+        //Set the text contained in the square brackets ($aTitle)
+        if($row['aid'] === NULL) {
+            $aTitle = "Unassigned";
+        }
+        else {
+            $subQuery = "select title from assignments where aid = " . $row['aid'];
+            $subResult = $conn->query($subQuery);
+            $aTitle = $subResult->fetch_assoc()['title'];
+        }
         //Add a delete button if aid is current assignment
         if($row['aid'] === $selectedAID && $row['aid'] !== NULL) {
             echo    "<tr>" .
-                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='rm' value='" . $row['qid'] . "'>-</button> " . $row['qText'] . "</td>" .
+                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='rm' value='" . $row['qid'] . "'>-</button> [" . $aTitle . "] " . $row['qText'] . "</td>" .
                     "</tr>";
         }
         else {
             echo    "<tr>" .
-                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='add' value='" . $row['qid'] . "'>+</button> " . $row['qText'] . "</td>" .
+                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='add' value='" . $row['qid'] . "'>+</button> [" . $aTitle . "] " . $row['qText'] . "</td>" .
                     "</tr>";
         }
     }
@@ -271,5 +281,5 @@ function removeQuestionFromAssignment($qid) {
 
 //Bonus
 function executeArbitrarySqlStatement($sql) {
-    
+
 }
