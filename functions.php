@@ -198,7 +198,25 @@ function fetchQuestionBank() {
 }
 
 function fetchAssignmentQuestions() {
+    global $conn;
+    connectToDatabase();
 
+    $aid = $_SESSION['selectedAssignmentAID'];
+
+    $sql = "select qText from questions where aid = " . $aid;
+    $result = $conn->query($sql);
+    if($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo    "<tr>" .
+                        "<td>" . $row['qText'] . "</td>" .
+                    "</tr>";
+        }
+    }
+    else {
+        echo "0 Assigned Questions";
+    }
+
+    $conn->close();
 }
 
 function addNewQuestion($qText) {

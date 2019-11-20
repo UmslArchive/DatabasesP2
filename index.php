@@ -53,12 +53,20 @@
         addNewQuestion($_GET['newQuestionText']);
         header('Location: index.php');
     }
+
+    if(isset($_GET['add'])) {
+        addQuestionToAssignment();
+    }
+
+    if(isset($_GET['rm'])) {
+        removeQuestionFromAssignment();
+    }
 ?>
 
 <body>
 
 <!-- Page title header -->
-<div class="titleBar bg-dark navbar-dark">Assignment Generator</div>
+<div class="titleBar bg-dark navbar-dark">Genuine Work</div>
 
 
 <!-- Navbar containing login form and course/assignment selection form -->
@@ -127,7 +135,9 @@
         </div>
 
         <div id="assignmentQuestionPoolDiv" class="col">
-            there
+            <table>
+                <?php fetchAssignmentQuestions(); ?>
+            </table>
         </div>
     </div>
     </form>
