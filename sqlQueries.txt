@@ -28,17 +28,10 @@ CREATE TABLE questions(
     FOREIGN KEY(aid) REFERENCES assignments(aid)
 );
 
-SELECT
-    qid,
-    qtext,
-    users.uid
-FROM
-    users,
-    questions,
-    assignments,
-    courses
-WHERE
-    questions.aid = assignments.aid AND 
-    assignments.cid = courses.cid AND 
-    courses.uid = users.uid AND
-    users.uid = 1;
+INSERT INTO `users` (`uid`, `isAdmin`) VALUES (NULL, '1');
+INSERT INTO `users` (`uid`, `isAdmin`) VALUES (NULL, '0');
+INSERT INTO `courses` (`cid`, `NAME`, `uid`) VALUES (NULL, 'Math', '1');
+INSERT INTO `courses` (`cid`, `NAME`, `uid`) VALUES (NULL, 'English', '2');
+INSERT INTO `courses` (`cid`, `NAME`, `uid`) VALUES (NULL, 'Science', '1');
+INSERT INTO `courses` (`cid`, `NAME`, `uid`) VALUES (NULL, 'Geography', '1');
+INSERT INTO `courses` (`cid`, `NAME`, `uid`) VALUES (NULL, 'Physics', '2');
