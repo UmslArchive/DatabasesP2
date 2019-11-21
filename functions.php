@@ -69,14 +69,25 @@ function logout() {
     session_destroy();
 }
 
-function createAssignment() {
+function createAssignment($aTitle) {
+    global $conn;
+    connectToDatabase();
+    $course = $_SESSION['selectedCourseCID'];
 
+    //Insert
+    $sql = "insert into assignments (title, cid) values ('". htmlspecialchars($aTitle) ."', " . $course . ");";
+    $result = $conn->query($sql);
+
+    //Update session state
+    saveAssignmentToSession($aTitle);
+
+    $conn->close();
 }
 
 function fetchCourses() {
     global $conn;
     connectToDatabase();
-    $user = $_SESSION["user"];
+    $user = $_SESSION['user'];
 
     //Query a users courses
     $sql = "select name, cid from courses where courses.uid = " . $user;

@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  style="background-color:#372b3b; color:lightgray;">
 <head>
     <title>Assignment Generator</title>
     
@@ -143,7 +143,7 @@
 </nav>
 
 <!-- Tables: -->
-<div class="tablesContainer">
+<div class="tablesContainer" style="background-color:#372b3b; color:lightgray;">
     
     <!-- Table titles -->
     <div class="row">
@@ -192,13 +192,9 @@
 
 </div>
 
-<hr style="border-top: 2px solid black;">
-
 </body>
 
 </html>
-
-
 
 <!-- DEBUGGING -->
 <?php
