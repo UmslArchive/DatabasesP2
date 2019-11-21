@@ -82,6 +82,7 @@ function createAssignment($aTitle) {
     $sql = "select name, cid from courses where courses.uid = " . $user;
     $result = $conn->query($sql);
 
+    //do nothing if there are no courses
     if($result->num_rows == 0) {
         $conn->close();
         return;
