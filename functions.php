@@ -221,12 +221,12 @@ function fetchQuestionBank() {
         //Add a delete button if aid is current assignment
         if($row['aid'] === $selectedAID && $row['aid'] !== NULL) {
             echo    "<tr>" .
-                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='rm' value='" . $row['qid'] . "'>-</button> [" . $aTitle . "] </td><td>" . $row['qText'] . "</td>" .
+                        "<td id='testtd'><button style='width:25px;' type='submit' form=\"addRemForm\" name='rm' value='" . $row['qid'] . "'>-</button> [" . $aTitle . "] </td><td>" . $row['qText'] . "</td>" .
                     "</tr>";
         }
         else {
             echo    "<tr>" .
-                        "<td><button style='width:25px;' type='submit' form=\"addRemForm\" name='add' value='" . $row['qid'] . "'>+</button> [" . $aTitle . "] </td><td>" . $row['qText'] . "</td>" .
+                        "<td id='testtd'><button style='width:25px;' type='submit' form=\"addRemForm\" name='add' value='" . $row['qid'] . "'>+</button> [" . $aTitle . "] </td><td>" . $row['qText'] . "</td>" .
                     "</tr>";
         }
     }
@@ -323,6 +323,11 @@ function executeArbitrarySqlStatement($sql) {
     $conn->query($sql);
 
     $conn->close();
+
+    //Refresh session
+    $_POST['userid'] = $_SESSION['user'];
+    login();
+    getAdminStatus();
 }
 
 function displayAdminTools() {

@@ -72,3 +72,9 @@ th {
 td {
     white-space: nowrap;
 }
+
+#testtd {
+    font-size: 10pt;
+    font-weight: lighter;
+    color: #bf8ebc;
+}
