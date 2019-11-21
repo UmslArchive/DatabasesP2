@@ -1,0 +1,50 @@
+Author: Colby Ackerman
+Class: CS4610
+Assign: Project 2
+Date: 11/21/19
+
+CONFIG:
+Configuration variables can be found at the top of the 'functions.php' file.
+The configuration options are self explanatory. Depending on which OS you create
+your database in, the password defaults differently. On windows it defaults to ""
+and on mac it defaults to "root". Dunno about linux.
+
+FEATURES:
+A user can log in to gain access to their courses which contain assignments which contain questions.
+A normal user cannot create courses or users, but an admin can do so through the admin form at the bottom
+via sql query statement. Actually the admin can execute any query in the admin form. It's worth noting that
+the admin query just executes without informing the user in any way, so unless something is done that will
+directly affect the current page, the database must be checked. The other features are standard. User can
+create questions, assignments, and assign/unassign questions to assignments. A question can only be in a 
+single assingment at a time, and it can be unassigned by either clicking the minus next to it or by reassigning
+it to a different assignment.
+
+ASSUMPTIONS:
+It is assumed by the webpage that the databases already exists, and some minor setup queries have been run.
+The setup queries are provided in the 'Create Database Queries.txt' file. So you the grader should 
+create a default database named 'p2' or whatever if you want to change the config at the top of 'functions.php'
+then copy and paste all queries in 'Create Database Queries.txt' and execute. Everything else can be done entirely
+within the webpage.
+
+POST-SETUP-QUERY-EXECUTION:
+    - 2 users are created with uid 1 and 2.
+        - id 1 is admin, id 2 is normal user
+        - sign in by typing in the number into the login textbox
+        - admin can create more users through the admin form
+
+    -Each generated user has a couple courses assigned to them
+
+LIMITATIONS:
+The main limitation I can think of right now is due to an oversight that I made which went
+unrealized until I had nearly finished the entire assignment. The core issue is that
+questions retain their assignment across users. The way the database is currently setup,
+I believe user -> question cardinality is 1 to N, but it should be N to M. I think the fix
+for this is to have a mapping table between uid and qid. If this were a real product or if
+I had caught it sooner, it would be fixed. Oh well.
+
+FINAL THOUGHTS:
+I feel like I learned a lot about weaving php into html in this project. I actually figured out how to contain
+everything within one file from an architectural standpoint. Although I separated out the functions for the sake of readability.
+Pretty stark contrast from the first project which was a mess of files. All in all actually had fun with this one.
+
+Also, modifying the style of scroll-bars is awful.
