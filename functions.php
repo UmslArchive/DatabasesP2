@@ -7,7 +7,7 @@ $username = "root";
 $password = "root";
 $conn;
 
-$debug = true;
+$debug = false;
 
 //=============================================================================
 
@@ -195,6 +195,11 @@ function fetchQuestionBank() {
     //Select all questions
     $sql = "select qid, qText, aid from questions;";
     $result = $conn->query($sql);
+
+    if($result->num_rows === 0) {
+        echo "<tr>0 Banked Questions</tr>";
+    }
+
     while($row = $result->fetch_assoc()) {
 
         //Set the text contained in the square brackets ($aTitle)
