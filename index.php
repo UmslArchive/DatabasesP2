@@ -83,7 +83,7 @@
 <body>
 
 <!-- Page title header -->
-<div class="titleBar bg-dark navbar-dark">Genuine Work</div>
+<div class="titleBar bg-dark navbar-dark">Assignment Generator</div>
 
 
 <!-- Navbar containing login form and course/assignment selection form -->
@@ -146,11 +146,15 @@
 <div class="tablesContainer" style="background-color:#372b3b; color:lightgray;">
     
     <!-- Table titles -->
-    <div class="row">
-        <div class="col"><b>Questions</b></div>
-        <div class="col"><b>Assignment Questions</b></div>
-    </div>
-    
+    <?php
+        if(isset($_SESSION['user'])) {
+            echo    "<div class='row'>" .
+                        "<div class='col'><b>Questions</b></div>" .
+                        "<div class='col'><b>Assignment Questions</b></div>" .
+                    "</div>";
+        }
+    ?>
+
     <!-- row 1 : question pool and assingment-question pool -->
     <form action="index.php" id="addRemForm">
 
@@ -169,26 +173,31 @@
     </div>
     </form>
 
-    <!-- New question form title -->
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-10"><b>New Question</b></div>
-        <div class="col"></div>
-    </div>
-
     <!-- row 2 : add new question form-->
-    <div class="row">
-        <div class="col"></div> <!-- empty column -->
-        
-        <div id="newQuestionDiv" class="col-10">
-            <form action="index.php" method="get">
-                <input type="text" name="newQuestionText" style="width:400px;">
-                <input type="submit" value="Add">
-            </form>
-        </div>
-        
-        <div class="col"></div> <!-- empty column -->
-    </div>
+    <?php
+        if(isset($_SESSION['user'])) {
+                    //Label
+            echo    "<div class='row'>" .
+                        "<div class='col'></div>" .
+                        "<div class='col-10'><b>New Question</b></div>" .
+                        "<div class='col'></div>" .
+                    "</div>" .
+                    
+                    //Form
+                    "<div class='row'>" .
+                        "<div class='col'></div>" .
+
+                        "<div id='newQuestionDiv' class='col-10'>" .
+                            "<form action='index.php' method='get'>" .
+                                "<input type='text' name='newQuestionText' style='width:400px;'>" .
+                                " <input type='submit' value='Add'>" .
+                            "</form>" .
+                        "</div>" .
+                        
+                        "<div class='col'></div>" .
+                    "</div>";
+        }
+    ?>
 
 </div>
 
