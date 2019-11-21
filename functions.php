@@ -70,6 +70,9 @@ function logout() {
 }
 
 function createAssignment($aTitle) {
+    if($aTitle === "")
+        return;
+
     global $conn;
     connectToDatabase();
     $course = $_SESSION['selectedCourseCID'];
