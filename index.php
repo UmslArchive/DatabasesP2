@@ -24,8 +24,8 @@
 
     //All of these 'isset' conditionals handle a form submission by either
     //updating the state variables in the _session global or by updating the 
-    //database. Then the header function wipes away the get and post variables,
-    //so all of these conditionals are skipped, but the results are stored.
+    //database. The header function then wipes away the get and post variables,
+    //so all of these conditionals are skipped after the redirect, but the results are stored.
 
     //Set 'user' session state variable
     if(isset($_POST['login'])) {
@@ -80,7 +80,7 @@
     }
 ?>
 
-<body>
+<body style="background-color:#372b3b; color:lightgray;">
 
 <!-- Page title header -->
 <div class="titleBar bg-dark navbar-dark">Assignment Generator</div>
@@ -200,6 +200,8 @@
     ?>
 
 </div>
+
+<?php displayAdminTools(); ?>
 
 </body>
 

@@ -7,7 +7,7 @@ $username = "root";
 $password = "root";
 $conn;
 
-$debug = false;
+$debug = true;
 
 //=============================================================================
 
@@ -235,7 +235,12 @@ function fetchAssignmentQuestions() {
     if(!isset($_SESSION ['user'])) {
         return;
     }
-    
+
+    if(!isset($_SESSION['selectedAssignmentAID'])) {
+        echo "Create an assignment";
+        return;
+    }
+
     global $conn;
     connectToDatabase();
 
@@ -310,4 +315,16 @@ function removeQuestionFromAssignment($qid) {
 //Bonus
 function executeArbitrarySqlStatement($sql) {
 
+}
+
+function displayAdminTools() {
+    if($_SESSION['admin'] == 1) {
+        echo    "<hr style='border-top:2px solid black'>" . 
+                "<div id='adminDiv' style='margin: auto; width: 50%; background-color:#372b3b; color:lightgray;'> Admin" .
+                    "<form action='index.php' method='post'>" .
+                        "<input type='text' name='arbitrary' style='width:500px;'> " .
+                        "<input type='submit' value='Execute'>" .
+                    "</form>" .
+                "</div>";
+    }
 }
