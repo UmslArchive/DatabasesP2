@@ -78,6 +78,11 @@
         removeQuestionFromAssignment($_GET['rm']);
         header('Location: index.php');
     }
+
+    if(isset($_POST['adminExec'])) {
+        executeArbitrarySqlStatement($_POST['adminExec']);
+        header('Location: index.php');
+    }
 ?>
 
 <body style="background-color:#372b3b; color:lightgray;">

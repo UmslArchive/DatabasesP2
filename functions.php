@@ -314,7 +314,12 @@ function removeQuestionFromAssignment($qid) {
 
 //Bonus
 function executeArbitrarySqlStatement($sql) {
+    global $conn;
+    connectToDatabase();
 
+    $conn->query($sql);
+
+    $conn->close();
 }
 
 function displayAdminTools() {
@@ -322,7 +327,7 @@ function displayAdminTools() {
         echo    "<hr style='border-top:2px solid black'>" . 
                 "<div id='adminDiv' style='margin: auto; width: 50%; background-color:#372b3b; color:lightgray;'> Admin" .
                     "<form action='index.php' method='post'>" .
-                        "<input type='text' name='arbitrary' style='width:500px;'> " .
+                        "<input type='text' name='adminExec' style='width:500px;'> " .
                         "<input type='submit' value='Execute'>" .
                     "</form>" .
                 "</div>";
