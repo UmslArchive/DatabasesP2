@@ -7,7 +7,7 @@ $username = "root";
 $password = "root";
 $conn;
 
-$debug = true;
+$debug = false;
 
 //=============================================================================
 
@@ -75,6 +75,18 @@ function createAssignment($aTitle) {
 
     global $conn;
     connectToDatabase();
+
+    $user = $_SESSION['user'];
+
+    //Query a users courses
+    $sql = "select name, cid from courses where courses.uid = " . $user;
+    $result = $conn->query($sql);
+
+    if($result->num_rows == 0) {
+        $conn->close();
+        return;
+    }
+
     $course = $_SESSION['selectedCourseCID'];
 
     //Insert
@@ -95,6 +107,11 @@ function fetchCourses() {
     //Query a users courses
     $sql = "select name, cid from courses where courses.uid = " . $user;
     $result = $conn->query($sql);
+
+    if($result->num_rows == 0) {
+        $conn->close();
+        return;
+    }
 
     //Set the selectedCourseName to first row of the fetch if not already set.
     if($result->num_rows > 0 && !isset($_SESSION['selectedCourseName'])) {
