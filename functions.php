@@ -185,6 +185,10 @@ function saveAssignmentToSession($selectedAssignmentName) {
 }
 
 function fetchQuestionBank() {
+    if(!isset($_SESSION ['user'])) {
+        return;
+    }
+
     global $conn;
     connectToDatabase();
 
@@ -228,6 +232,10 @@ function fetchQuestionBank() {
 }
 
 function fetchAssignmentQuestions() {
+    if(!isset($_SESSION ['user'])) {
+        return;
+    }
+    
     global $conn;
     connectToDatabase();
 
